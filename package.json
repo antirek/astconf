@@ -1,0 +1,22 @@
+{
+  "name": "astconf",
+  "version": "1.0.0",
+  "description": "astconf =======",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antirek/astconf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antirek/astconf/issues"
+  },
+  "homepage": "https://github.com/antirek/astconf",
+  "dependencies": {
+    "ini": "^1.3.0"
+  }
+}
