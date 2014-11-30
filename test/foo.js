@@ -13,10 +13,12 @@ var i = require("../")
             + 's=something\n'
             + 's1=\"something\'\n'
             + 's2=something else\n'
-            + 'zr[]=deedee\n'
-            + 'ar[]=one\n'
-            + 'ar[]=three\n'
-            + 'ar[]=this is included\n'
+            + 'zr=deedee\n'
+            + 'ar=one\n'
+            + 'ar=three\n'
+            + 'ar=this is included\n'
+            + 'ar=this is included\n'
+            + 'br=cold\n'
             + 'br=warm\n'
             + '\n'
             + '[a]\n'
@@ -26,7 +28,7 @@ var i = require("../")
             + '} } } }\nj="\\"{ o: \\"p\\", a: { av:'
             + ' \\"a val\\", b: { c: { e: \\"this [value]'
             + '\\" } } } }\\""\n"[]"=a square?\n'
-            + 'cr[]=four\ncr[]=eight\n\n'
+            + 'cr=four\ncr=eight\n\n'
             +'[a.b.c]\ne=1\n'
             + 'j=2\n\n[x\\.y\\.z]\nx.y.z=xyz\n\n'
             + '[x\\.y\\.z.a\\.b\\.c]\na.b.c=abc\n'
@@ -41,8 +43,8 @@ var i = require("../")
       's1' : '\"something\'',
       's2': 'something else',
       'zr': ['deedee'],
-      'ar': ['one', 'three', 'this is included'],
-      'br': 'warm',
+      'ar': ['one', 'three', 'this is included', 'this is included'],
+      'br': ['cold', 'warm'],
       a:
        { av: 'a val',
          e: '{ o: p, a: { av: a val, b: { c: { e: "this [value]" } } } }',
