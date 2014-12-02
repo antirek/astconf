@@ -27,8 +27,7 @@ var i = require("../")
             + '{ av: a val, b: { c: { e: "this [value]" '
             + '} } } }\nj="\\"{ o: \\"p\\", a: { av:'
             + ' \\"a val\\", b: { c: { e: \\"this [value]'
-            + '\\" } } } }\\""\n"[]"=a square?\n'
-            + 'cr=four\ncr=eight\n\n'
+            + '\\" } } } }\\""\n"[]"=a square?\n\n'
             +'[a.b.c]\ne=1\n'
             + 'j=2\n\n[x\\.y\\.z]\nx.y.z=xyz\n\n'
             + '[x\\.y\\.z.a\\.b\\.c]\na.b.c=abc\n'
@@ -42,7 +41,7 @@ var i = require("../")
       's': 'something',
       's1' : '\"something\'',
       's2': 'something else',
-      'zr': ['deedee'],
+      'zr': "deedee",
       'ar': ['one', 'three', 'this is included', 'this is included'],
       'br': ['cold', 'warm'],
       a:
@@ -50,7 +49,6 @@ var i = require("../")
          e: '{ o: p, a: { av: a val, b: { c: { e: "this [value]" } } } }',
          j: '"{ o: "p", a: { av: "a val", b: { c: { e: "this [value]" } } } }"',
          "[]": "a square?",
-         cr: ['four', 'eight'],
          b: { c: { e: '1', j: '2' } } },
       'x.y.z': {
         'x.y.z': 'xyz',

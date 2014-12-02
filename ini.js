@@ -94,33 +94,25 @@ function decode (str) {
     }
 
     // Convert keys with '[]' suffix to an array
-    if (p[key]) {
-        if (!Array.isArray(p[key])){
-          p[key] = [p[key]]
-        }else{
-          p[key].push(value);
-        }
+    
+    if (!p[key]) {
+      p[key] = value
+    } else {
+      if (!Array.isArray(p[key])) {
+        p[key] = [p[key]];
+        p[key].push(value);
+      } else {
+        p[key].push(value);
+      }
     }
-
-    if (key.length > 2 && key.slice(-2) === "[]") {
-        key = key.substring(0, key.length - 2)
-        if (!p[key]) {
-          p[key] = []
-        }
-        else if (!Array.isArray(p[key])) {
-          p[key] = [p[key]]
-        }
-    }
+    
 
     // safeguard against resetting a previously defined
     // array by accidentally forgetting the brackets
-    if (Array.isArray(p[key])) {
-      p[key].push(value)
-    }
-    else {
-      p[key] = value
-    }
+    
   })
+
+  //console.log(p);
 
   // {a:{y:1},"a.b":{x:2}} --> {a:{y:1,b:{x:2}}}
   // use a filter to return the keys that have to be deleted.
