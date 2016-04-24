@@ -14,14 +14,18 @@ function encode (obj, opt) {
   if (typeof opt === "string") {
     opt = {
       section: opt,
-      whitespace: false
+      whitespace: false,
+      timestamp: true
     }
-  } else {
-    opt = opt || {}
+  } else {    
+    opt = opt || { timestamp: true}
     opt.whitespace = opt.whitespace === true
+
   }
 
   var separator = opt.whitespace ? " = " : "="
+
+  
 
   Object.keys(obj).forEach(function (k, _, __) {
     var val = obj[k]
@@ -46,13 +50,18 @@ function encode (obj, opt) {
     var section = (opt.section ? opt.section + "." : "") + nk
     var child = encode(obj[k], {
       section: section,
-      whitespace: opt.whitespace
+      whitespace: opt.whitespace,
+      timestamp: false
     })
     if (out.length && child.length) {
       out += eol
     }
     out += child
   })
+
+  if (opt.timestamp) {
+    out = '; generated ' + (new Date()).toString() + eol + out;
+  }
 
   return out
 }

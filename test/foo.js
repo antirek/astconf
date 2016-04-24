@@ -77,7 +77,7 @@ test("decode from file", function (t) {
 })
 
 test("encode from data", function (t) {
-  var e = i.encode(expectD)
+  var e = i.encode(expectD,{timestamp: false})
   t.deepEqual(e, expectE)
 
   var obj = {log: { type:'file', level: {label:'debug', value:10} } }
