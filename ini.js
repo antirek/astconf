@@ -7,7 +7,7 @@ exports.unsafe = unsafe
 
 var eol = process.platform === "win32" ? "\r\n" : "\n"
 
-function encode (obj, opt) {
+function encode (obj, opt, firstEntrance = true) {
   var children = []
     , out = ""
 
@@ -17,7 +17,7 @@ function encode (obj, opt) {
       whitespace: false,
       timestamp: true
     }
-  } else {    
+  } else {
     opt = opt || { timestamp: true}
     opt.whitespace = opt.whitespace === true
 
@@ -25,13 +25,21 @@ function encode (obj, opt) {
 
   var separator = opt.whitespace ? " = " : "="
 
-  
+
 
   Object.keys(obj).forEach(function (k, _, __) {
     var val = obj[k]
     if (val && Array.isArray(val)) {
         val.forEach(function(item) {
+          if (typeof item === 'string ' || !firstEntrance) {
             out += safe(k) + separator + safe(item) + "\n"
+          } else {
+            out += encode(item, {
+              section: k,
+              whitespace: opt.whitespace,
+              timestamp: false
+            },false) + eol;
+          }
         })
     }
     else if (val && typeof val === "object") {
@@ -52,7 +60,7 @@ function encode (obj, opt) {
       section: section,
       whitespace: opt.whitespace,
       timestamp: false
-    })
+    },false)
     if (out.length && child.length) {
       out += eol
     }
@@ -103,7 +111,7 @@ function decode (str) {
     }
 
     // Convert keys with '[]' suffix to an array
-    
+
     if (!p[key]) {
       p[key] = value
     } else {
@@ -114,11 +122,11 @@ function decode (str) {
         p[key].push(value);
       }
     }
-    
+
 
     // safeguard against resetting a previously defined
     // array by accidentally forgetting the brackets
-    
+
   })
 
   //console.log(p);
